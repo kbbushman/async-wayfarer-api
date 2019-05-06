@@ -18,7 +18,7 @@ app.use(session({
   secret: 'SSShhhhhh, this is a secret...',
   resave: false,
   saveUninitialized: false,
-  cookie: { path: '/', secure: false, httpOnly: false },
+  cookie: { path: '/', secure: true, httpOnly: false },
   name: 'wsid',
 }));
 
