@@ -34,15 +34,15 @@ router.get('/:postId', async (req, res) => {
 
 // DELETE Post Destroy Route
 router.delete('/:postId', async (req, res) => {
-  // console.log(req.session.currentUser.id, )
+  // console.log(req.session.currentUser)
   if (!req.session.currentUser) {
     return res.status(401).json({status: 401, errors: 'Unauthorized. Please login and try again'});
   }
 
   try {
     const post = await db.Post.findById(req.params.postId);
-    console.log(post.userId.toString(), req.session.currentUser.id)
-    if (post.userId.toString() !== req.session.currentUser.id) {
+    console.log(post.userId.toString(), req.session.currentUser)
+    if (post.userId.toString() !== req.session.currentUser) {
       return res.status(401).json({status: 401, errors: 'You do not have permission to delete this post'});
     }
     
