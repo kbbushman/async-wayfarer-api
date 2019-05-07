@@ -51,7 +51,9 @@ router.post('/:cityId/posts', async (req, res) => {
       body: req.body.body,
     }
     const data = await db.Post.create(newPost);
-    result = await data.populate('userId').execPopulate();
+    // ExecPopulate since populate doesn't return a query
+    // result = await data.populate('userId', '-password').execPopulate();
+    result = await data.populate({path: 'userId', select: 'name'}).execPopulate();
     res.json(result);
   } catch (err) {
     res.status(500).json({status: 500, error: 'Something went wrong. Please try again'});

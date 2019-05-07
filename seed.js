@@ -26,7 +26,15 @@ const cityData = [
 
 const usersData = [
   {
-    id: 1,
+    name: "Test Person",
+    username: "test",
+    email: "test@test.com",
+    password: '1234',
+    phone: "1-770-736-8031 x56442",
+    website: "hildegard.org",
+    city: 'Big Sur'
+  },
+  {
     name: "Leanne Graham",
     username: "Bret",
     email: "Sincere@april.biz",
@@ -36,7 +44,6 @@ const usersData = [
     city: 'San Diego'
   },
   {
-    id: 2,
     name: "Ervin Howell",
     username: "Antonette",
     email: "Shanna@melissa.tv",
@@ -46,7 +53,6 @@ const usersData = [
     city: 'Sacramento'
   },
   {
-    id: 3,
     name: "Clementine Bauch",
     username: "Samantha",
     email: "Nathan@yesenia.net",
@@ -56,7 +62,6 @@ const usersData = [
     city: 'Fairfield'
   },
   {
-    id: 4,
     name: "Patricia Lebsack",
     username: "Karianne",
     email: "Julianne.OConner@kory.org",
@@ -66,7 +71,6 @@ const usersData = [
     city: 'Cypress'
   },
   {
-    id: 5,
     name: "Chelsey Dietrich",
     username: "Kamren",
     email: "Lucio_Hettinger@annie.ca",
@@ -76,7 +80,6 @@ const usersData = [
     city: 'Fountain Valley'
   },
   {
-    id: 6,
     name: "Mrs. Dennis Schulist",
     username: "Leopoldo_Corkery",
     email: "Karley_Dach@jasper.info",
@@ -86,7 +89,6 @@ const usersData = [
     city: 'Big Sur'
   },
   {
-    id: 7,
     name: "Kurtis Weissnat",
     username: "Elwyn.Skiles",
     email: "Telly.Hoeger@billy.biz",
@@ -96,7 +98,6 @@ const usersData = [
     city: 'Monterey'
   },
   {
-    id: 8,
     name: "Nicholas Runolfsdottir V",
     username: "Maxime_Nienow",
     email: "Sherwood@rosamond.me",
@@ -106,7 +107,6 @@ const usersData = [
     city: 'Pacific Grove'
   },
   {
-    id: 9,
     name: "Glenna Reichert",
     username: "Delphine",
     email: "Chaim_McDermott@dana.io",
@@ -116,7 +116,6 @@ const usersData = [
     city: 'Carmel'
   },
   {
-    id: 10,
     name: "Clementina DuBuque",
     username: "Moriah.Stanton",
     email: "Rey.Padberg@karina.biz",

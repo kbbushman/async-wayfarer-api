@@ -8,7 +8,7 @@ const db = require('../models');
 router.get('/', async (req, res) => {
   try {
     const data = await db.Post.find()
-      .populate('userId', '-password')
+      .populate('userId', '-password -email -sign_up_date')
       .populate('cityId')
       .exec();
     res.json(data);
@@ -34,15 +34,23 @@ router.get('/:postId', async (req, res) => {
 
 // DELETE Post Destroy Route
 router.delete('/:postId', async (req, res) => {
+  // console.log(req.session.currentUser.id, )
   if (!req.session.currentUser) {
     return res.status(401).json({status: 401, errors: 'Unauthorized. Please login and try again'});
   }
 
   try {
-    const response = await db.Post.findByIdAndRemove(req.params.postId);
+    const post = await db.Post.findById(req.params.postId);
+    console.log(post.userId.toString(), req.session.currentUser.id)
+    if (post.userId.toString() !== req.session.currentUser.id) {
+      return res.status(401).json({status: 401, errors: 'You do not have permission to delete this post'});
+    }
+    
+    const deletedPost = await post.deleteOne();
+    console.log(deletedPost)
     res.json({status: 200});
   } catch (err) {
-    res.status(500).json({status: 500, error: 'Something went wrong. Please try again'});
+      res.status(500).json({status: 500, error: 'Something went wrong. Please try again'});
   }
 });
 

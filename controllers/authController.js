@@ -115,7 +115,7 @@ router.get('/users', (req, res) => {
   //   return res.status(401).json({status: 401, errors: 'Unauthorized. Please login and try again'});
   // }
 
-  db.User.find({}, {password: 0}, (err, allUsers) => {
+  db.User.find({}, {password: 0, email: 0, __v: 0}, (err, allUsers) => {
     if (err) return res.status(500).json({status: 500, errors: 'Something went wrong. Please try again'});
     res.json(allUsers);
   });
