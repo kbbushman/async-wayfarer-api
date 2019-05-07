@@ -28,7 +28,7 @@ router.get('/:cityId', async (req, res) => {
 router.get('/:cityId/posts', async (req, res) => {
   try {
     const data = await db.Post.find({cityId: req.params.cityId})
-      .populate('userId')
+      .populate('userId', '-password -city -email -__v')
       .exec();
     res.json(data);
   } catch (err) {
@@ -45,7 +45,7 @@ router.post('/:cityId/posts', async (req, res) => {
 
   try {
     const newPost = {
-      userId: req.session.currentUser.id,
+      userId: req.session.currentUser,
       cityId: req.params.cityId,
       title: req.body.title,
       body: req.body.body,
