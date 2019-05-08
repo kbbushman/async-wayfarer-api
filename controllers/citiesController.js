@@ -27,8 +27,8 @@ router.get('/:cityId', async (req, res) => {
 // GET City Posts Index Route
 router.get('/:cityId/posts', async (req, res) => {
   try {
-    const data = await db.Post.find({cityId: req.params.cityId})
-      .populate('userId', '-password -city -email -__v')
+    const data = await db.Post.find({city_id: req.params.cityId})
+      .populate('user_id', '-password -city -email -__v')
       .exec();
     res.json(data);
   } catch (err) {
@@ -45,15 +45,15 @@ router.post('/:cityId/posts', async (req, res) => {
 
   try {
     const newPost = {
-      userId: req.session.currentUser,
-      cityId: req.params.cityId,
+      user_id: req.session.currentUser,
+      city_id: req.params.cityId,
       title: req.body.title,
       body: req.body.body,
     }
     const data = await db.Post.create(newPost);
     // ExecPopulate since populate doesn't return a query
     // result = await data.populate('userId', '-password').execPopulate();
-    result = await data.populate({path: 'userId', select: 'name'}).execPopulate();
+    result = await data.populate({path: 'user_id', select: 'name'}).execPopulate();
     res.json(result);
   } catch (err) {
     res.status(500).json({status: 500, error: 'Something went wrong. Please try again'});
