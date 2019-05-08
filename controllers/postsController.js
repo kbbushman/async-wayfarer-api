@@ -42,7 +42,7 @@ router.delete('/:postId', async (req, res) => {
   try {
     const post = await db.Post.findById(req.params.postId);
     console.log(post.userId.toString(), req.session.currentUser)
-    if (post.userId.toString() !== req.session.currentUser) {
+    if (post.user_id.toString() !== req.session.currentUser) {
       return res.status(401).json({status: 401, errors: 'You do not have permission to delete this post'});
     }
     
