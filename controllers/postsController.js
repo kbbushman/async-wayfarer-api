@@ -21,11 +21,11 @@ router.get('/', async (req, res) => {
 // GET Post Show Route
 router.get('/:postId', async (req, res) => {
   try {
-    const data = await db.Post.findById(req.params.postId)
+    const post = await db.Post.findById(req.params.postId)
       .populate('user_id')
       .populate('city_id')
       .exec();
-    res.json({status: 200, data});
+    res.json({status: 200, post});
   } catch (err) {
     res.status(500).json({status: 500, error: 'Something went wrong. Please try again'});
   }

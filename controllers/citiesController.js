@@ -52,7 +52,7 @@ router.post('/:cityId/posts', async (req, res) => {
     }
     const data = await db.Post.create(newPost);
     // ExecPopulate since populate doesn't return a query
-    // result = await data.populate('userId', '-password').execPopulate();
+    // result = await data.populate('user_id', '-password').execPopulate();
     result = await data.populate({path: 'user_id', select: 'name'}).execPopulate();
     res.json(result);
   } catch (err) {
