@@ -104,7 +104,7 @@ router.post('/login', async (req, res) => {
       // Create user session
       req.session.currentUser = foundUser._id;
       // Then send success status and message
-      return res.json({status: 200, message: 'Login successful', userId: foundUser._id});
+      return res.json({status: 200, message: 'Login successful', currentUser: foundUser._id});
     }
 
   } catch (err) {
