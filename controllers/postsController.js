@@ -8,8 +8,8 @@ const db = require('../models');
 router.get('/', async (req, res) => {
   try {
     const data = await db.Post.find()
-      .populate('userId', '-password -email -sign_up_date')
-      .populate('cityId')
+      .populate('user_id', '-password -email -sign_up_date')
+      .populate('city_id')
       .exec();
     res.json(data);
   } catch (err) {
@@ -22,8 +22,8 @@ router.get('/', async (req, res) => {
 router.get('/:postId', async (req, res) => {
   try {
     const data = await db.Post.findById(req.params.postId)
-      .populate('userId')
-      .populate('cityId')
+      .populate('user_id')
+      .populate('city_id')
       .exec();
     res.json({status: 200, data});
   } catch (err) {
