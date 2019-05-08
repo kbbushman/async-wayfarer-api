@@ -24,7 +24,7 @@ app.use(session({
     path: '/',
     httpOnly: false,
     secure: process.env.NODE_ENV === 'production' ? true : false,
-    domain: process.env.NODE_ENV === 'production' ? 'http://https://wayfarer-react.herokuapp.com' : 'http://localhost.com'
+    domain: process.env.NODE_ENV === 'production' ? 'https://wayfarer-react.herokuapp.com' : 'http://localhost.com'
   },
   name: 'wsid',
 }));
