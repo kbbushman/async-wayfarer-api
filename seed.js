@@ -564,8 +564,8 @@ const seedDatabase = async () => {
     // Associate Users/Posts/Cities
     for (const post in newPosts) {
       const randomIndex = arr => Math.floor(Math.random() * arr.length);
-      newPosts[post].userId = newUsers[randomIndex(newUsers)];
-      newPosts[post].cityId = newCities[randomIndex(newCities)];
+      newPosts[post].user_id = newUsers[randomIndex(newUsers)];
+      newPosts[post].city_id = newCities[randomIndex(newCities)];
       const savedPost = await newPosts[post].save();
     }
 

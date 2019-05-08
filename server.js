@@ -5,6 +5,8 @@ const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
+console.log('Environment ======== ', process.env.NODE_ENV);
+
 // Controllers
 const authCtrl = require('./controllers/authController');
 const usersCtrl = require('./controllers/usersController');
