@@ -18,8 +18,13 @@ app.use(session({
   secret: 'SSShhhhhh, this is a secret...',
   resave: false,
   saveUninitialized: false,
-  // cookie: { path: '/', secure: true, httpOnly: true },
-  // name: 'wsid',
+  cookie: {
+    path: '/',
+    httpOnly: false,
+    secure: process.env.NODE_ENV === 'production' ? true : false,
+    domain: process.env.NODE_ENV === 'production' ? 'http://https://wayfarer-react.herokuapp.com' : 'http://localhost.com'
+  },
+  name: 'wsid',
 }));
 
 // BodyParser
